@@ -1,0 +1,42 @@
+.App {
+    text-align: center;
+  }
+  
+  .board {
+    display: inline-block;
+    margin-top: 50px;
+  }
+  
+  .row {
+    display: flex;
+  }
+  
+  .square {
+    width: 100px;
+    height: 100px;
+    margin: 1px;
+    background: #fff;
+    border: 1px solid #999;
+    font-size: 54px;
+    cursor: pointer;
+  }
+  
+  .status {
+    margin-top: 20px;
+    font-size: 24px;
+  }
+  
+  .reset {
+    margin-top: 20px;
+    padding: 10px 20px;
+    font-size: 18px;
+    background-color: #4caf50;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+  }
+  
+  .reset:hover {
+    background-color: #45a049;
+  }
+  

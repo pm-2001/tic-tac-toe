@@ -60,37 +60,7 @@ body {
   display: flex;
 }
 
-.square {
-  background: #9df8ff;
-  border: 1px solid #999;
-  float: left;
-  font-size: 54px;
-  font-weight: bold;
-  line-height: 34px;
-  height: 100px;
-  margin-right: -1px;
-  margin-top: -1px;
-  padding: 0;
-  text-align: center;
-  width: 100px;
-}
 
-.board-row:after {
-  clear: both;
-  content: '';
-  display: table;
-}
 
-.status {
-  margin-bottom: 10px;
-  font-size: 30px;
-  margin-bottom: 40px;
-}
-.game {
-  display: flex;
-  flex-direction: row;
-}
 
-.game-info {
-  margin-left: 20px;
-}
+

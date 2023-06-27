@@ -1,84 +1,42 @@
-import logo from './logo.svg';
+
+import React from 'react';
 import './App.css';
-import {useState} from 'react';
+import TwoPlayer from './components/Twoplayer.js';
+import OnePlayer from './components/Oneplayer.js';
+import { useState } from 'react';
 
-function Square({value,onSquareClick}){
-  return (
-    <>
-      <button className="square" onClick = {onSquareClick}>{value}</button>
-    </>
-  )
+const initialState = {
+    player1:false,
+    player2:false,
 }
 
-export default function Board() {
-  const [isXNext,setIsXNext] = useState(true);
-  const [squares,setSquares] = useState(Array(9).fill(null));
-
-  function handleClick(i){
-    if(squares[i] || calculateWinner(squares)){ return;}
-    const nextSquares = squares.slice();
-    if(isXNext){
-      nextSquares[i] = 'X';
-    }
-    else{
-      nextSquares[i] = 'O';
-    }
-    setSquares(nextSquares);
-    setIsXNext(!isXNext);
+export default function App() {
+    const [isShown, setIsShown] = useState({initialState});
+  
+    function oneClick(){
+      setIsShown({player1:true, player2:false});
+    };
+    function twoClick(){
+      setIsShown({player1:false, player2:true});
+    };
+  
+    return (
+      <div>
+        {/* <button onClick={oneClick}>Oneplayer</button> */}
+        {isShown.player1 ? <OnePlay/> : <button onClick={oneClick}>Oneplayer</button>}
+        {/* <button onClick={twoClick}>Two player</button> */}
+        {isShown.player2 ? <TwoPlay/> : <button onClick={twoClick}>Two player</button>}
+      </div>
+    );
   }
-
-  const winner = calculateWinner(squares);
-  let status;
-  if(winner){
-    status = 'Winner: '+winner;
-    alert('Congratulations');
+  
+  function OnePlay() {
+    return (
+      <OnePlayer />
+    );
   }
-  else{
-    status = 'Next player: '+(isXNext?'X':'O');
+  function TwoPlay() {
+    return (
+      <TwoPlayer />
+    );
   }
-
-  return (
-  <>
-    <div className="status">{status}</div>
-    <div className="board-row">
-      <Square value = {squares[0]} onSquareClick = {()=>handleClick(0)}/>
-      <Square value = {squares[1]} onSquareClick = {()=>handleClick(1)}/>
-      <Square value = {squares[2]} onSquareClick = {()=>handleClick(2)}/>
-    </div>
-    <div className="board-row">
-      <Square value = {squares[3]} onSquareClick = {()=>handleClick(3)}/>
-      <Square value = {squares[4]} onSquareClick = {()=>handleClick(4)}/>
-      <Square value = {squares[5]} onSquareClick = {()=>handleClick(5)}/>
-    </div>
-    <div className="board-row">
-      <Square value = {squares[6]} onSquareClick = {()=>handleClick(6)}/>
-      <Square value = {squares[7]} onSquareClick = {()=>handleClick(7)}/>
-      <Square value = {squares[8]} onSquareClick = {()=>handleClick(8)}/>
-    </div>
-    
-
-  </>
-  )
-}
-
-function calculateWinner(squares){
-  const lines = [
-    [0,1,2],
-    [3,4,5],
-    [6,7,8],
-
-    [0,3,6],
-    [1,4,7],
-    [2,5,8],
-
-    [0,4,8],
-    [2,4,6]
-  ]
-  for(let i = 0; i<lines.length; i++){
-    const [a,b,c] = lines[i];
-    if(squares[a] && squares[a]===squares[b] && squares[a]===squares[c]){
-      return squares[a];
-    }
-  }
-  return null;
-}
