@@ -52,7 +52,7 @@ const App = () => {
   };
 
   const renderSquare = (index) => (
-    <button className="square" onClick={() => handleSquareClick(index)}>
+    <button className="square1" onClick={() => handleSquareClick(index)}>
       {gameState.squares[index]}
     </button>
   );
@@ -63,33 +63,33 @@ const App = () => {
 
   return (
     <div className="App">
-      <div className="board">
-      <div className="status">
-        {gameState.winner ? `Winner: ${gameState.winner}` : gameState.isPlayerTurn ? "Your turn" : "AI's turn"}
-      </div>
-        <div className="row">
-          {renderSquare(0)}
-          {renderSquare(1)}
-          {renderSquare(2)}
+        {/* <div className="board"> */}
+            <div className="status">
+                {gameState.winner ? `Winner: ${gameState.winner}` : gameState.isPlayerTurn ? "Your Turn" : "AI's turn"}
+            </div>
+            <div className="row">
+            {renderSquare(0)}
+            {renderSquare(1)}
+            {renderSquare(2)}
+            </div>
+            <div className="row">
+            {renderSquare(3)}
+            {renderSquare(4)}
+            {renderSquare(5)}
+            </div>
+            <div className="row">
+            {renderSquare(6)}
+            {renderSquare(7)}
+            {renderSquare(8)}
+            </div>
+        {/* </div> */}
+        <div>
+            {gameState.winner && (
+                <button className="reset" onClick={resetGame}>
+                Reset Game
+                </button>
+            )}
         </div>
-        <div className="row">
-          {renderSquare(3)}
-          {renderSquare(4)}
-          {renderSquare(5)}
-        </div>
-        <div className="row">
-          {renderSquare(6)}
-          {renderSquare(7)}
-          {renderSquare(8)}
-        </div>
-      </div>
-      <div>
-        {gameState.winner && (
-            <button className="reset" onClick={resetGame}>
-            Reset Game
-            </button>
-        )}
-      </div>
     </div>
   );
 };

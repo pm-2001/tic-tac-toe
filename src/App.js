@@ -4,6 +4,7 @@ import './App.css';
 import TwoPlayer from './components/Twoplayer.js';
 import OnePlayer from './components/Oneplayer.js';
 import { useState } from 'react';
+import bg from './tictactoe.avif'
 
 const initialState = {
     player1:false,
@@ -22,10 +23,13 @@ export default function App() {
   
     return (
       <div>
-        {/* <button onClick={oneClick}>Oneplayer</button> */}
-        {isShown.player1 ? <OnePlay/> : <button onClick={oneClick}>Oneplayer</button>}
-        {/* <button onClick={twoClick}>Two player</button> */}
-        {isShown.player2 ? <TwoPlay/> : <button onClick={twoClick}>Two player</button>}
+        {isShown.player1 || isShown.player2 ? null : <img src={bg} alt="logo" className="logo"/> }
+        {isShown.player1 ? <OnePlay/> : null }
+        {isShown.player2 ? <TwoPlay/> : null}
+        <div className="twobutton">
+                <button onClick={oneClick} className="oneplayer">One Player</button>
+                <button onClick={twoClick} className="twoplayer">Two Player</button>
+        </div>
       </div>
     );
   }
