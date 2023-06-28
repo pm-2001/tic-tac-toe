@@ -91,7 +91,7 @@
     .reset {
       margin-top: 20px;
       border-radius: 5px;
-      margin-right: 60px;
+      /* margin-right: 6px; */
       padding: 10px 20px;
       font-size: 18px;
       background-color: #f5332d;
@@ -106,9 +106,9 @@
 
     .status {
       margin-top: 0px;
-      font-size: 24px;
+      font-size: 20px;
       margin-bottom: 20px;
-      margin-right: 60px;
+      /* margin-right: 60px; */
     }
 
     .square2 {
